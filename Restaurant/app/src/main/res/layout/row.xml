@@ -1,0 +1,27 @@
+<LinearLayout xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="fill"
+        android:layout_weight="1"
+        android:foregroundGravity="fill_horizontal|center_vertical|center_horizontal"
+        android:gravity="center|center_vertical"
+        android:text="TextView"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+
+    <Button
+        android:id="@+id/button1"
+        style="app"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="승인"
+        android:visibility="visible"
+        tools:visibility="visible" />
+
+</LinearLayout>
