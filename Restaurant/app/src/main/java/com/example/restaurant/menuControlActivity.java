@@ -68,8 +68,6 @@ public class menuControlActivity extends AppCompatActivity {
         final ListAdapter adapter = new ListAdapter(this, mItem);
         listView.setAdapter(adapter);
 
-        Log.i("intent check", select_corner);
-
         final Button addImage_button = findViewById(R.id.addImage_button);
         addImage_button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -108,8 +106,6 @@ public class menuControlActivity extends AppCompatActivity {
         });
     }
 
-    String[] parent_path = select_corner.split("_");
-
     private class ViewHolder{
         ImageView image;
         TextView Text;
@@ -121,6 +117,7 @@ public class menuControlActivity extends AppCompatActivity {
         private ArrayList<User> item;
         private int nListCnt = 0;
         private Context mContext;
+        String[] parent_path = select_corner.split("_");
 
         public ListAdapter(Context context, ArrayList<User> list) {
             this.mContext = context;
