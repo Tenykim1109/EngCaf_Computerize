@@ -21,7 +21,7 @@ public class select_cornerActivity extends AppCompatActivity{
         Button D_corner = (Button)findViewById(R.id.D_corner);
 
 
-        final Intent nextIntent = new Intent(this, cornerActivity.class);
+        final Intent nextIntent = new Intent(this, corner_activity.class);
         A_corner.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
