@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".loginActivity">
 
     <EditText
         android:id="@+id/idText"
@@ -65,4 +65,5 @@
         android:shadowRadius="5"
         android:text="admin login"
         android:textColor="#FFFFFF" />
+
 </LinearLayout>
