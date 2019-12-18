@@ -1,6 +1,11 @@
 package com.example.restaurant;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -12,8 +17,7 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
+
 import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -23,92 +27,107 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.IgnoreExtraProperties;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+
 import java.util.ArrayList;
-import java.util.Iterator;
 
 public class menuControlActivity extends AppCompatActivity {
-    class User {
-        String form, name, price;
+    @IgnoreExtraProperties
+    public class User {
+        String form;
+        String name;
+        String price;
 
-        User(String form, String name, String price) {
+        public User() {
+            // Default constructor required for calls to DataSnapshot.getValue(User.class)
+        }
+
+        public User(String form, String name, String price) {
             this.form = form;
             this.name = name;
             this.price = price;
         }
     }
 
-    String corner;
-    String[] parent_path = corner.split("_");
+    String select_corner;
+    String[] parent_path = select_corner.split("_");
     int data_count = 0;
     DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
     FirebaseStorage storage = FirebaseStorage.getInstance();
+    ListView listView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.menu_control);
-
-        final ArrayList<User> mItem = new ArrayList<>();
+        setContentView(R.layout.activity_menu_control);
+        listView = findViewById(R.id.listView);
+        final ArrayList<User> mItem = new ArrayList<User>();
+        select_corner = getIntent().getStringExtra("select_corner");
         final ListAdapter adapter = new ListAdapter(this, mItem);
-
-        ListView listView = findViewById(R.id.listView);
         listView.setAdapter(adapter);
 
-        Button addImage_button = findViewById(R.id.addImage_button);
+        final Button addImage_button = findViewById(R.id.addImage_button);
         addImage_button.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                Intent nextIntent = new Intent(getApplicationContext(), AddActivity.class);
+            public void onClick(View view) {
+                Intent nextIntent = new Intent(menuControlActivity.this, AddActivity.class);
                 startActivity(nextIntent);
                 finish();
             }
         });
 
-        ref.child(corner).addListenerForSingleValueEvent(new ValueEventListener() {
+        ref.child(select_corner);
+        ref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (data_count == 0) {
                     Log.d("TAG", "dataSnapshot");
 
-                    for (DataSnapshot i : dataSnapshot.getChildren()) {
-                        User userdata = new User(i.child("form").getValue().toString(),
-                                i.child("name").getValue().toString(),
-                                i.child("price").getValue().toString());
+                    for(DataSnapshot child : dataSnapshot.getChildren()) {
+                        User userdata = new User(
+                                child.child("form").getValue().toString(),
+                                child.child("name").getValue().toString(),
+                                child.child("price").getValue().toString()
+                                );
                         Log.d("TAG", "forLoop");
                         mItem.add(userdata);
                     }
                     adapter.notifyDataSetChanged();
-                    data_count = data_count + 1;
+                    data_count += 1;
                 }
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-                //TODO("not implemented");
+                //TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
             }
         });
     }
 
-    private class ViewHolder {
+    private class ViewHolder{
         ImageView image;
-        TextView text;
+        TextView Text;
         Button button;
     }
 
-    class ListAdapter extends BaseAdapter {
-        private Context context;
+    public class ListAdapter extends BaseAdapter {
+        private LayoutInflater inflater = null;
         private ArrayList<User> item;
+        private int nListCnt = 0;
+        private Context mContext;
 
-        ListAdapter(Context mcontext, ArrayList<User> mItem) {
-            context = mcontext;
-            item = mItem;
+        public ListAdapter(Context context, ArrayList<User> list) {
+            this.mContext = context;
+            this.item = list;
+            this.nListCnt = item.size();
         }
 
         @Override
         public int getCount() {
+            Log.i("TAG", "getCount");
             return item.size();
         }
 
@@ -119,59 +138,62 @@ public class menuControlActivity extends AppCompatActivity {
 
         @Override
         public long getItemId(int position) {
-            return (long) position;
+            return position;
         }
 
         @Override
-        public View getView(final int position, View convertView, ViewGroup parent) {
-            View view;
+        public View getView(int position, View convertView, ViewGroup parent) {
+            View view = convertView;
             final ViewHolder holder;
-
-            if (convertView == null) {
-                view = LayoutInflater.from(context).inflate(R.layout.row2, null);
+            if (view == null) {
+                if (inflater == null) {
+                    inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                }
+                view = inflater.inflate(R.layout.row2, parent, false);
                 holder = new ViewHolder();
-                holder.image = view.findViewById(R.id.imageView);
-                holder.text = view.findViewById(R.id.textView3);
-                holder.button = view.findViewById(R.id.button);
+                holder.image = findViewById(R.id.imageView);
+                holder.Text = findViewById(R.id.textView3);
+                holder.button = findViewById(R.id.button);
                 view.setTag(holder);
-            } else {
-                view = convertView;
+            }
+            else {
+                holder = (ViewHolder) convertView.getTag();
+//                view = convertView;
                 return view;
             }
 
-            final User mItem = item.get(position);
-            String test = mItem.name + "\n" + mItem.price + "원";
-            holder.text.setText(test);
+            final User mitem = item.get(position);
+            String test = mitem.name + "\n" + mitem.price + "원";
+            holder.Text.setText(test);
 
-            final StorageReference storageRef = storage.getReference().child(parent_path[0]).child(mItem.name + "." + mItem.form);
-            storageRef.getDownloadUrl().addOnCompleteListener(new OnCompleteListener() {
-                public final void onComplete(@NonNull Task task) {
-                    if (task.isSuccessful()) {
+            final StorageReference storageRef = storage.getReference().child(parent_path[0]).child(mitem.name+"."+mitem.form);
+            storageRef.getDownloadUrl().addOnCompleteListener(new OnCompleteListener<Uri>() {
+                @Override
+                public void onComplete(@NonNull Task<Uri> task) {
+                    if(task.isSuccessful())
                         Glide.with(menuControlActivity.this).load(task.getResult()).into(holder.image);
-                    }
                 }
             });
-
             holder.button.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View v) {
+                public void onClick(View view) {
                     storageRef.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
                         public void onSuccess(Void aVoid) {
-                            ref.child(corner).child(mItem.name).removeValue();
-                            Toast.makeText(getApplicationContext(), "삭제", Toast.LENGTH_SHORT).show();
-                            Intent nextIntent = new Intent(getApplicationContext(), menuControlActivity.class);
+                            ref.child(select_corner).child(mitem.name).removeValue();
+                            Toast.makeText(menuControlActivity.this, "삭제", Toast.LENGTH_SHORT).show();
+                            Intent nextIntent = new Intent(menuControlActivity.this, menuControlActivity.class);
                             startActivity(nextIntent);
-                            finish();
                         }
                     }).addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception e) {
-                            Toast.makeText(getApplicationContext(), "실패", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(menuControlActivity.this,"실패.",Toast.LENGTH_SHORT).show();
                         }
                     });
                 }
             });
+
             return view;
         }
     }

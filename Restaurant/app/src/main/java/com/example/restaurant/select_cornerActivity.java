@@ -1,4 +1,5 @@
 package com.example.restaurant;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -6,49 +7,53 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class select_cornerActivity extends AppCompatActivity
-{
+public class select_cornerActivity extends AppCompatActivity{
+    String select_corner;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.select_corner_page);
 
-        Button A_corner = findViewById(R.id.A_corner);
+        Button A_corner = (Button)findViewById(R.id.A_corner);
+        Button B_corner = (Button)findViewById(R.id.B_corner);
+        Button C_corner = (Button)findViewById(R.id.C_corner);
+        Button D_corner = (Button)findViewById(R.id.D_corner);
+
+
+        final Intent nextIntent = new Intent(this, cornerActivity.class);
         A_corner.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent nextIntent = new Intent(getApplicationContext(), corner_activity.class);
-                nextIntent.putExtra("corner", "A_corner");
+                select_corner = "A_order";
+                nextIntent.putExtra("select_corner", select_corner);
                 startActivity(nextIntent);
             }
         });
 
-        Button B_corner = findViewById(R.id.B_corner);
         B_corner.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent nextIntent = new Intent(getApplicationContext(), corner_activity.class);
-                nextIntent.putExtra("corner", "B_corner");
+                select_corner = "B_order";
+                nextIntent.putExtra("select_corner", select_corner);
                 startActivity(nextIntent);
             }
         });
 
-        Button C_corner = findViewById(R.id.C_corner);
         C_corner.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent nextIntent = new Intent(getApplicationContext(), corner_activity.class);
-                nextIntent.putExtra("corner", "C_corner");
+                select_corner = "C_order";
+                nextIntent.putExtra("select_corner", select_corner);
                 startActivity(nextIntent);
             }
         });
 
-        Button D_corner = findViewById(R.id.D_corner);
         D_corner.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent nextIntent = new Intent(getApplicationContext(), corner_activity.class);
-                nextIntent.putExtra("corner", "D_corner");
+                select_corner = "D_order";
+                nextIntent.putExtra("select_corner", select_corner);
                 startActivity(nextIntent);
             }
         });
