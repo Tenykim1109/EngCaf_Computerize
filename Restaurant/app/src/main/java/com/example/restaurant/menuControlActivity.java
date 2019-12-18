@@ -53,7 +53,6 @@ public class menuControlActivity extends AppCompatActivity {
     }
 
     String select_corner;
-    String[] parent_path = select_corner.split("_");
     int data_count = 0;
     DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
     FirebaseStorage storage = FirebaseStorage.getInstance();
@@ -68,6 +67,8 @@ public class menuControlActivity extends AppCompatActivity {
         select_corner = getIntent().getStringExtra("select_corner");
         final ListAdapter adapter = new ListAdapter(this, mItem);
         listView.setAdapter(adapter);
+
+        Log.i("intent check", select_corner);
 
         final Button addImage_button = findViewById(R.id.addImage_button);
         addImage_button.setOnClickListener(new View.OnClickListener() {
@@ -106,6 +107,8 @@ public class menuControlActivity extends AppCompatActivity {
             }
         });
     }
+
+    String[] parent_path = select_corner.split("_");
 
     private class ViewHolder{
         ImageView image;
