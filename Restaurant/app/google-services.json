@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "257087387985",
+    "firebase_url": "https://maptp-a44cb.firebaseio.com",
+    "project_id": "maptp-a44cb",
+    "storage_bucket": "maptp-a44cb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:257087387985:android:ac9d932e9b0c592ae73b70",
+        "android_client_info": {
+          "package_name": "com.example.restaurant"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "257087387985-r4aag0reutie4cfjur21e88e5484ts8k.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.restaurant",
+            "certificate_hash": "bf36702c7b68ee54cea674507ef63ddf05a2e102"
+          }
+        },
+        {
+          "client_id": "257087387985-ialct58unbkkjnf06o8re8he4uenq8ui.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDBIh_WedqY8JoqfWUHxFIDWqsdDVtz9s8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "257087387985-ialct58unbkkjnf06o8re8he4uenq8ui.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
