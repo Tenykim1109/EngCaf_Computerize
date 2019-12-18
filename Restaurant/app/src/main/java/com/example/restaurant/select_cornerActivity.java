@@ -1,5 +1,4 @@
 package com.example.restaurant;
-
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -14,11 +13,7 @@ public class select_cornerActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.select_corner_page);
 
-        final String selected_corner = "";
-        Button A_corner = (Button)findViewById(R.id.A_corner);
-        Button B_corner = (Button)findViewById(R.id.B_corner);
-        Button C_corner = (Button)findViewById(R.id.C_corner);
-        Button D_corner = (Button)findViewById(R.id.D_corner);
+        Button A_corner = findViewById(R.id.A_corner);
         A_corner.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -28,6 +23,7 @@ public class select_cornerActivity extends AppCompatActivity
             }
         });
 
+        Button B_corner = findViewById(R.id.B_corner);
         B_corner.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -37,6 +33,7 @@ public class select_cornerActivity extends AppCompatActivity
             }
         });
 
+        Button C_corner = findViewById(R.id.C_corner);
         C_corner.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -46,6 +43,7 @@ public class select_cornerActivity extends AppCompatActivity
             }
         });
 
+        Button D_corner = findViewById(R.id.D_corner);
         D_corner.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -54,8 +52,5 @@ public class select_cornerActivity extends AppCompatActivity
                 startActivity(nextIntent);
             }
         });
-
-
-
     }
 }

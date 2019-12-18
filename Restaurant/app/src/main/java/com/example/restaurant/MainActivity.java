@@ -1,7 +1,5 @@
 package com.example.restaurant;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -14,7 +12,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-       Button start_button = (Button)findViewById(R.id.start_button);
+       Button start_button = findViewById(R.id.start_button);
        start_button.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {
@@ -23,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
            }
        });
 
-        Button login_button = (Button)findViewById(R.id.login_button);
+        Button login_button = findViewById(R.id.login_button);
         login_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
