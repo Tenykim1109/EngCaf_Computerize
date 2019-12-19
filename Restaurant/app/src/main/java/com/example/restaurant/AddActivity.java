@@ -109,6 +109,7 @@ public class AddActivity extends AppCompatActivity implements View.OnClickListen
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
                 public void onFailure(@NonNull Exception e) {
+//                    e.printStackTrace();
                     progressDialog.dismiss();
                     Toast.makeText(getApplicationContext(), "실패 다시 시도하시오", Toast.LENGTH_SHORT).show();
                 }

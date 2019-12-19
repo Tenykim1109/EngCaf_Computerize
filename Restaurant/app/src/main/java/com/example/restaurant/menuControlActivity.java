@@ -74,6 +74,7 @@ public class menuControlActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent nextIntent = new Intent(menuControlActivity.this, AddActivity.class);
+                nextIntent.putExtra("select_corner", select_corner);
                 startActivity(nextIntent);
                 finish();
             }
