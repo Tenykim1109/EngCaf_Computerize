@@ -7,6 +7,8 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -22,6 +24,7 @@ import com.google.firebase.storage.UploadTask;
 
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -32,18 +35,17 @@ public class AddActivity extends AppCompatActivity implements View.OnClickListen
     private Uri filepath;
     FirebaseStorage storage;
     StorageReference storageReference;
-    Button btnChoose, btnUpload;
+    ImageButton btnChoose;
+    Button btnUpload;
     EditText nameText, priceText;
-    ImageView imageView;
     String select_corner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.add_page);
-        btnChoose = (Button)findViewById(R.id.btnChoose);
+        btnChoose = (ImageButton)findViewById(R.id.btnChoose);
         btnUpload = (Button)findViewById(R.id.btnUpload);
-        imageView = (ImageView)findViewById(R.id.imageView);
         nameText = (EditText) findViewById(R.id.nameText);
         priceText = (EditText) findViewById(R.id.priceText);
         storage = FirebaseStorage.getInstance();
@@ -67,7 +69,6 @@ public class AddActivity extends AppCompatActivity implements View.OnClickListen
                     Toast.makeText(this,"이름과 가격을 입력하시오",Toast.LENGTH_SHORT).show();
                 break;
         }
-
     }
 
     @Override
@@ -77,11 +78,11 @@ public class AddActivity extends AppCompatActivity implements View.OnClickListen
             filepath = data.getData();
             try {
                 Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), filepath);
-                imageView.setImageBitmap(bitmap);
+                Drawable drawable = new BitmapDrawable(bitmap);
+                btnChoose.setBackground(drawable);
             }catch(IOException e) {
                 e.printStackTrace();
             }
-
         }
     }
 
@@ -114,7 +115,6 @@ public class AddActivity extends AppCompatActivity implements View.OnClickListen
                     Toast.makeText(getApplicationContext(), "실패 다시 시도하시오", Toast.LENGTH_SHORT).show();
                 }
             });
-
         }
         else {
             Toast.makeText(this,"이미지를 선택하세요.",Toast.LENGTH_SHORT).show();
