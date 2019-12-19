@@ -62,6 +62,7 @@ public class menuControlActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menu_control);
+
         listView = findViewById(R.id.listView);
         final ArrayList<User> mItem = new ArrayList<User>();
         select_corner = getIntent().getStringExtra("select_corner");

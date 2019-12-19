@@ -50,7 +50,6 @@ public class AddActivity extends AppCompatActivity implements View.OnClickListen
         storageReference = storage.getReference();
 
         select_corner = getIntent().getStringExtra("select_corner");
-
         btnChoose.setOnClickListener(this);
         btnUpload.setOnClickListener(this);
     }
