@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
                         String[] user_temp = email.split("@");
                         student student = com.student.app.student.INSTANCE;
                         student.setID(user_temp[0]);
-                        Intent nextIntent = new Intent(getApplicationContext(), MainActivity.class);
+                        Intent nextIntent = new Intent(getApplicationContext(), studentActivity.class);
                         startActivity(nextIntent);
                         Toast.makeText((Context) MainActivity.this, (CharSequence) "로그인 성공", Toast.LENGTH_SHORT).show();
 
