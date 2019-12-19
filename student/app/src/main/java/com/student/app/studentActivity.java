@@ -52,6 +52,7 @@ public class studentActivity extends AppCompatActivity {
             public void onClick(View v){
                 select_corner = "A_menu";
                 Intent nextIntent = new Intent(studentActivity.this, cornerActivity.class);
+                nextIntent.putExtra("select", select_corner);
                 startActivity(nextIntent);
             }
         });
@@ -73,6 +74,7 @@ public class studentActivity extends AppCompatActivity {
             public void onClick(View v){
                 select_corner = "B_menu";
                 Intent nextIntent = new Intent(studentActivity.this, cornerActivity.class);
+                nextIntent.putExtra("select", select_corner);
                 startActivity(nextIntent);
             }
         });
@@ -94,6 +96,7 @@ public class studentActivity extends AppCompatActivity {
             public void onClick(View v){
                 select_corner = "C_menu";
                 Intent nextIntent = new Intent(studentActivity.this, cornerActivity.class);
+                nextIntent.putExtra("select", select_corner);
                 startActivity(nextIntent);
             }
         });
@@ -115,6 +118,7 @@ public class studentActivity extends AppCompatActivity {
             public void onClick(View v){
                 select_corner = "D_menu";
                 Intent nextIntent = new Intent(studentActivity.this, cornerActivity.class);
+                nextIntent.putExtra("select", select_corner);
                 startActivity(nextIntent);
             }
         });

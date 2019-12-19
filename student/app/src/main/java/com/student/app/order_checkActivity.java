@@ -23,16 +23,18 @@ public class order_checkActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.order_check);
+
         FirebaseDatabase var10000 = FirebaseDatabase.getInstance();
         final FirebaseDatabase database = var10000;
+        setContentView(R.layout.order_check);
         //this.setContentView(-1300023);
         final Button button1  = (Button)findViewById(R.id.button1);
         button1.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
                 TextView tv = (TextView)findViewById(R.id.order_state_text);
                 String state = tv.getText().toString();
-                if(state!="" && state != "조리중" && state!= "주문수락대기중"){
+
+                if(state.equals("")^true && state.equals("조리중")^ true && state.equals("주문수락대기중") ^true) {
                     database.getReference().child("student").child(student.INSTANCE.getID()).child("order").setValue("");
                     Toast.makeText((Context)order_checkActivity.this, (CharSequence)"수령되었습니다.",Toast.LENGTH_SHORT).show();
                     order_checkActivity.this.finish();
@@ -46,7 +48,7 @@ public class order_checkActivity extends AppCompatActivity {
         button1.setOnTouchListener(new View.OnTouchListener() {
             public boolean onTouch(View v, MotionEvent event) {
                 if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                   button1.setBackgroundResource(R.drawable.getorder2);
+                    button1.setBackgroundResource(R.drawable.getorder2);
                 } else if (event.getAction() == MotionEvent.ACTION_UP) {
                     button1.setBackgroundResource(R.drawable.getorder);
                 }
