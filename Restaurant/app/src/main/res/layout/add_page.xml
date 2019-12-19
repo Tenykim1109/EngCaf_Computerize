@@ -10,7 +10,7 @@
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="match_parent"
-        android:layout_height="496dp"></ImageView>
+        android:layout_height="450dp"></ImageView>
 
 
     <EditText
@@ -38,14 +38,14 @@
         <Button
             android:id="@+id/btnChoose"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Choose"></Button>
 
         <Button
             android:id="@+id/btnUpload"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Upload"></Button>
 

@@ -61,7 +61,7 @@ public class menuControlActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_menu_control);
+        setContentView(R.layout.menu_control);
         listView = findViewById(R.id.listView);
         final ArrayList<User> mItem = new ArrayList<User>();
         select_corner = getIntent().getStringExtra("select_corner");
@@ -78,8 +78,7 @@ public class menuControlActivity extends AppCompatActivity {
             }
         });
 
-        ref.child(select_corner);
-        ref.addListenerForSingleValueEvent(new ValueEventListener() {
+        ref.child(select_corner).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (data_count == 0) {
