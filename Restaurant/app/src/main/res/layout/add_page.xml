@@ -5,45 +5,45 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <ImageButton
-        android:id="@+id/btnChoose"
-        android:layout_width="match_parent"
-        android:layout_height="450dp"
-        android:layout_gravity="center"
-        android:background="@drawable/ic_image" />
+        <ImageButton
+            android:id="@+id/btnChoose"
+            android:layout_width="match_parent"
+            android:layout_height="400dp"
+            android:layout_gravity="center"
+            android:background="@drawable/ic_image" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="클릭하여 사진을 변경할 수 있습니다." />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:orientation="vertical">
-
-        <EditText
-            android:id="@+id/nameText"
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="메뉴이름을 입력하시오"
-            android:inputType="text" />
+            android:text="클릭하여 사진을 변경할 수 있습니다." />
 
-        <EditText
-            android:id="@+id/priceText"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="가격을입력하시오(숫자만)"
-            android:inputType="text" />
-    </LinearLayout>
+            android:layout_marginTop="30dp"
+            android:orientation="vertical">
 
-    <Button
-        android:id="@+id/btnUpload"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Upload" />
+            <EditText
+                android:id="@+id/nameText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="메뉴이름을 입력하시오"
+                android:inputType="text" />
+
+            <EditText
+                android:id="@+id/priceText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="가격을입력하시오(숫자만)"
+                android:inputType="text" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnUpload"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Upload" />
 
 </LinearLayout>
