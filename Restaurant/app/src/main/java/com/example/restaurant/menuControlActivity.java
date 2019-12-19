@@ -53,7 +53,6 @@ public class menuControlActivity extends AppCompatActivity {
     }
 
     String select_corner;
-    String[] parent_path = select_corner.split("_");
     int data_count = 0;
     DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
     FirebaseStorage storage = FirebaseStorage.getInstance();
@@ -118,6 +117,7 @@ public class menuControlActivity extends AppCompatActivity {
         private ArrayList<User> item;
         private int nListCnt = 0;
         private Context mContext;
+        String[] parent_path = select_corner.split("_");
 
         public ListAdapter(Context context, ArrayList<User> list) {
             this.mContext = context;
