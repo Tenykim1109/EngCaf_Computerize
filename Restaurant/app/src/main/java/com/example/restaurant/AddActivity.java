@@ -105,7 +105,9 @@ public class AddActivity extends AppCompatActivity implements View.OnClickListen
                     myRef.child(name).child("price").setValue(price);
                     Toast.makeText(getApplicationContext(), "메뉴추가완료", Toast.LENGTH_SHORT).show();
                     Intent nextIntent = new Intent(getApplicationContext(), menuControlActivity.class);
+                    nextIntent.putExtra("select_corner", select_corner);
                     startActivity(nextIntent);
+                    finish();
                 }
             }).addOnFailureListener(new OnFailureListener() {
                 @Override

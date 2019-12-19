@@ -152,7 +152,7 @@ public class menuControlActivity extends AppCompatActivity {
             }
             else {
                 holder = (ViewHolder) convertView.getTag();
-                return view;
+//                return view;
             }
 
             final User mitem = item.get(position);
@@ -176,7 +176,9 @@ public class menuControlActivity extends AppCompatActivity {
                             ref.child(select_corner).child(mitem.name).removeValue();
                             Toast.makeText(menuControlActivity.this, "삭제", Toast.LENGTH_SHORT).show();
                             Intent nextIntent = new Intent(menuControlActivity.this, menuControlActivity.class);
+                            nextIntent.putExtra("select_corner", select_corner);
                             startActivity(nextIntent);
+                            finish();
                         }
                     }).addOnFailureListener(new OnFailureListener() {
                         @Override
