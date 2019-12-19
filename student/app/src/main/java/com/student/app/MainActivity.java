@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.List;
@@ -31,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         final Button signup_button = (Button)findViewById(R.id.signup_button);
         signup_button.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
-                Intent nextIntent = new Intent(getApplicationContext(),MainActivity.class);
+                Intent nextIntent = new Intent(getApplicationContext(),signupActivity.class);
                 startActivity(nextIntent);
             }
         });
@@ -54,14 +55,10 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this, "email password를 입력하시오", Toast.LENGTH_SHORT).show();
         }
         else{
-            firebaseAuth.signInWithEmailAndPassword(
-                    //email = edit_email.getText().toString(),
-                    //password = edit_password.getText().toString()
-                    email,password
-            ).addOnCompleteListener(new OnCompleteListener() {
+            firebaseAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                 public void onComplete(@Nonnull Task task) {
                     if (task.isSuccessful()) {
-                        String user_temp[] = email.split("@");
+                        String[] user_temp = email.split("@");
                         student student = com.student.app.student.INSTANCE;
                         student.setID(user_temp[0]);
                         Intent nextIntent = new Intent(getApplicationContext(), MainActivity.class);
