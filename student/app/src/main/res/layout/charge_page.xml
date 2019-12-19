@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <EditText
+        android:id="@+id/moneyText"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="  충전금액(원)"
+        android:inputType="number"
+
+        android:textSize="30dp" />
+
+    <Button
+        android:id="@+id/charge_button"
+        android:layout_width="150dp"
+        android:layout_height="30dp"
+        android:layout_margin="100dp"
+        android:background="@drawable/buttonshape"
+        android:shadowColor="#A8A8A8"
+        android:shadowDx="0"
+        android:shadowDy="0"
+        android:shadowRadius="5"
+        android:text="충전"
+        android:textColor="#FFFFFF"
+        android:textSize="15dp" />
+</LinearLayout>
