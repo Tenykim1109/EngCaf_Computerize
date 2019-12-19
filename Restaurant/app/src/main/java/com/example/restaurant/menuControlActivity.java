@@ -33,19 +33,14 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class menuControlActivity extends AppCompatActivity {
     @IgnoreExtraProperties
     public class User {
-        String form;
-        String name;
-        String price;
+        String form, name, price;
 
-        public User() {
-            // Default constructor required for calls to DataSnapshot.getValue(User.class)
-        }
-
-        public User(String form, String name, String price) {
+        User(String form, String name, String price) {
             this.form = form;
             this.name = name;
             this.price = price;
@@ -64,7 +59,7 @@ public class menuControlActivity extends AppCompatActivity {
         setContentView(R.layout.menu_control);
 
         listView = findViewById(R.id.listView);
-        final ArrayList<User> mItem = new ArrayList<User>();
+        final ArrayList<User> mItem = new ArrayList<>();
         select_corner = getIntent().getStringExtra("select_corner");
         final ListAdapter adapter = new ListAdapter(this, mItem);
         listView.setAdapter(adapter);
@@ -88,9 +83,9 @@ public class menuControlActivity extends AppCompatActivity {
 
                     for(DataSnapshot child : dataSnapshot.getChildren()) {
                         User userdata = new User(
-                                child.child("form").getValue().toString(),
-                                child.child("name").getValue().toString(),
-                                child.child("price").getValue().toString()
+                                Objects.requireNonNull(child.child("form").getValue()).toString(),
+                                Objects.requireNonNull(child.child("name").getValue()).toString(),
+                                Objects.requireNonNull(child.child("price").getValue()).toString()
                                 );
                         Log.d("TAG", "forLoop");
                         mItem.add(userdata);
@@ -116,14 +111,12 @@ public class menuControlActivity extends AppCompatActivity {
     public class ListAdapter extends BaseAdapter {
         private LayoutInflater inflater = null;
         private ArrayList<User> item;
-        private int nListCnt = 0;
         private Context mContext;
         String[] parent_path = select_corner.split("_");
 
-        public ListAdapter(Context context, ArrayList<User> list) {
+        ListAdapter(Context context, ArrayList<User> list) {
             this.mContext = context;
             this.item = list;
-            this.nListCnt = item.size();
         }
 
         @Override
@@ -150,16 +143,15 @@ public class menuControlActivity extends AppCompatActivity {
                 if (inflater == null) {
                     inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
                 }
-                view = inflater.inflate(R.layout.row2, parent, false);
                 holder = new ViewHolder();
-                holder.image = findViewById(R.id.imageView);
-                holder.Text = findViewById(R.id.textView3);
-                holder.button = findViewById(R.id.button);
+                view = inflater.inflate(R.layout.row2, parent, false);
+                holder.image = view.findViewById(R.id.imageView);
+                holder.Text = view.findViewById(R.id.textView3);
+                holder.button = view.findViewById(R.id.button);
                 view.setTag(holder);
             }
             else {
                 holder = (ViewHolder) convertView.getTag();
-//                view = convertView;
                 return view;
             }
 
@@ -194,7 +186,6 @@ public class menuControlActivity extends AppCompatActivity {
                     });
                 }
             });
-
             return view;
         }
     }
