@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
-    android:orientation="vertical"
-    tools:context=".ManagementActivity">
+    android:orientation="vertical">
 
     <LinearLayout
 
@@ -16,19 +14,21 @@
 
         <Button
             android:id="@+id/A_Button"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:layout_height="150dp"
             android:layout_weight="1"
-            android:text="A 코너"
-            android:textAllCaps="false" />
+            android:background="@drawable/a"
+            android:layout_marginTop="50dp"
+            android:textSize="24sp" />
 
         <Button
             android:id="@+id/B_Button"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:layout_height="150dp"
             android:layout_weight="1"
-            android:text="B 코너"
-            android:textAllCaps="false" />
+            android:background="@drawable/bb"
+            android:layout_marginTop="50dp"
+            android:textSize="24sp" />
 
     </LinearLayout>
 
@@ -39,19 +39,21 @@
 
         <Button
             android:id="@+id/C_Button"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:layout_height="150dp"
             android:layout_weight="1"
-            android:text="C 코너"
-            android:textAllCaps="false" />
+            android:background="@drawable/cc"
+            android:layout_marginTop="50dp"
+            android:textSize="24sp" />
 
         <Button
             android:id="@+id/D_Button"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:layout_height="150dp"
             android:layout_weight="1"
-            android:text="D 코너"
-            android:textAllCaps="false" />
+            android:background="@drawable/dd"
+            android:layout_marginTop="50dp"
+            android:textSize="24sp" />
     </LinearLayout>
 
 </LinearLayout>

@@ -20,13 +20,18 @@
         android:layout_weight="6"
         android:gravity="center|center_vertical"
         android:text="menu\nprice"
+        android:textSize="25dp"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
-
+    <View
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
     <Button
         android:id="@+id/button"
-        android:layout_width="wrap_content"
+        android:layout_width="100dp"
         android:layout_height="120dp"
         android:layout_weight="1"
-        android:text="삭제" />
+        android:background="@drawable/delete"
+        android:layout_gravity="right"/>
 
 </LinearLayout>
