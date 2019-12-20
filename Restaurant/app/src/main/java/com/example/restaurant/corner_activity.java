@@ -109,7 +109,7 @@ public class corner_activity extends AppCompatActivity {
         @Override
         public int getCount() {
             Log.i("TAG", "getCount");
-            return listCnt;
+            return mItem.size();
         }
 
         @Override
@@ -130,8 +130,8 @@ public class corner_activity extends AppCompatActivity {
                 view = inflater.inflate(R.layout.row, container, false);
             }
 
-            TextView text = (TextView)findViewById(R.id.textView3);
-            final Button button1 = (Button)findViewById(R.id.button1);
+            TextView text = (TextView)view.findViewById(R.id.textView3);
+            final Button button1 = (Button)view.findViewById(R.id.button1);
 
             text.setText(mItem.get(position).menuNum);
             if(mItem.get(position).menustate.equals(start))
