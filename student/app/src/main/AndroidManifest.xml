@@ -13,7 +13,7 @@
         <activity android:name=".studentActivity" />
         <activity android:name=".signupActivity" />
         <activity android:name=".chargeActivity" />
-        <activity android:name=".cornerActivity" />
+        <activity android:name=".cornerActivity"/>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
